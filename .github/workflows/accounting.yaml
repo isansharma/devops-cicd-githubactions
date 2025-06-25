@@ -11,4 +11,6 @@ jobs:
               with:
                 dotnet-version: '6.0.x'
             - name: Copy proto file
-              run: cp pb/demo.proto src/accounting/proto/demo.proto
+              run: |
+               mkdir -p src/accounting/proto
+               cp pb/demo.proto src/accounting/proto/demo.proto
