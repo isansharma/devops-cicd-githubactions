@@ -17,3 +17,6 @@ jobs:
             - name: Restore dependencies
               run: |
                dotnet restore src/accounting/Accounting.csproj
+            - name: Build Project
+              run: |
+               dotnet build src/accounting/Accounting.csproj
