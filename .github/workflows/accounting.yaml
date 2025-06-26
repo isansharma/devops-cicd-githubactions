@@ -40,3 +40,11 @@ jobs:
                file: src/accounting/Dockerfile
                push: true
                tags: isansharma/accountingservice:${{ github.run_number }}
+            - name: Run Trivy vulnerability scan
+              uses: aquasecurity/trivy-action@v0.14.0
+              with:
+                image-ref: isansharma/accountingservice:${{ github.run_number }}
+                format: 'table'
+                exit-code: '1'              # Fail the workflow on high/critical issues
+                ignore-unfixed: true        # Optional: skip unfixed vulnerabilities
+                severity: 'CRITICAL,HIGH' 
