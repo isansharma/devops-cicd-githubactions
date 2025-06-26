@@ -36,6 +36,6 @@ jobs:
             - name: Build and push
               uses: docker/build-push-action@v6
               with:
-               context: src/accounting/Dockerfile
+               context: src/accounting/
                push: true
                tags: isansharma/open-telemetry/accountingservice:${{ github.run_number }}
