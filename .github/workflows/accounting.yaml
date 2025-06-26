@@ -39,4 +39,4 @@ jobs:
                context: .
                file: src/accounting/Dockerfile
                push: true
-               tags: isansharma/open-telemetry/accountingservice:${{ github.run_number }}
+               tags: isansharma/accountingservice:${{ github.run_number }}
