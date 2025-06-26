@@ -41,7 +41,7 @@ jobs:
                push: true
                tags: isansharma/accountingservice:${{ github.run_number }}
             - name: Run Trivy vulnerability scan
-              uses: aquasecurity/trivy-action@v0.14.0
+              uses: aquasecurity/trivy-action@master
               with:
                 image-ref: isansharma/accountingservice:${{ github.run_number }}
                 format: 'table'
