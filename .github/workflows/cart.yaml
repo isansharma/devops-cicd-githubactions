@@ -22,4 +22,5 @@ jobs:
             dotnet build src/cart/src/cart.csproj
       - name: Test code
         run: |
-            dotnet test /src/cart/tests/cart.tests.csproj --no-build --verbosity normal
+            dotnet test src/cart/tests/cart.tests.csproj --no-build --verbosity normal
+            
