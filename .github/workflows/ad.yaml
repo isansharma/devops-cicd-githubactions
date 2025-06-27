@@ -45,16 +45,18 @@ jobs:
               with:
                username: ${{ secrets.DOCKERHUB_USERNAME }}
                password: ${{ secrets.DOCKERHUB_PASSWORD }}
-            - name: build and push image
-              uses: docker/build-push-action@v6
-              with:
-                 context: .
-                 file: 'src/ad/Dockerfile'
-                 push: true
-                 tags: isansharma/adservice
-            # - name: build image
-            #   run: |
-            #     docker buildx build -f src/ad/Dockerfile -t my-image-name ./src/ad
+            # - name: build and push image
+            #   uses: docker/build-push-action@v6
+            #   with:
+            #      context: .
+            #      file: 'src/ad/Dockerfile'
+            #      push: true
+            #      tags: isansharma/adservice
+            - name: build image
+              run: |
+                docker buildx build -f src/ad/Dockerfile -t isansharma/adservice ./src/ad
+                docker push isansharma/adservice:isansharma/adservice
+
             - name: Run Trivy vulnerability scan
               uses: aquasecurity/trivy-action@master
               with:
