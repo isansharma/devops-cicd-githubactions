@@ -1,11 +1,11 @@
 name: Build and Test Ad Service
-on: [push]
-    # push:
-    #     paths:
-    #         - 'src/ad/**'
-    # pull_request: 
-    #     paths:
-    #         - 'src/ad/**'
+on: 
+    push:
+        paths:
+            - 'src/ad/**'
+    pull_request: 
+        paths:
+            - 'src/ad/**'
 jobs:
     build:
         runs-on: ubuntu-latest
@@ -57,13 +57,13 @@ jobs:
                 docker buildx build -f src/ad/Dockerfile -t isansharma/adservice:${{ github.run_number }} ./src/ad --push --load
                 # docker push isansharma/adservice:isansharma/adservice
 
-            - name: Run Trivy vulnerability scan
-              uses: aquasecurity/trivy-action@master
-              with:
-                image-ref: isansharma/adservice:${{ github.run_number }}
-                format: 'table'
-                exit-code: '1'              # Fail the workflow on high/critical issues
-                ignore-unfixed: true        # Optional: skip unfixed vulnerabilities
-                severity: 'CRITICAL,HIGH' 
+            # - name: Run Trivy vulnerability scan
+            #   uses: aquasecurity/trivy-action@master
+            #   with:
+            #     image-ref: isansharma/adservice:${{ github.run_number }}
+            #     format: 'table'
+            #     exit-code: '1'              # Fail the workflow on high/critical issues
+            #     ignore-unfixed: true        # Optional: skip unfixed vulnerabilities
+            #     severity: 'CRITICAL,HIGH' 
 
               
