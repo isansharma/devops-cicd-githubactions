@@ -54,13 +54,13 @@ jobs:
             #      tags: isansharma/adservice
             - name: build image
               run: |
-                docker buildx build -f src/ad/Dockerfile -t isansharma/adservice ./src/ad --push --load
+                docker buildx build -f src/ad/Dockerfile -t isansharma/adservice:${{ github.run_number }} ./src/ad --push --load
                 # docker push isansharma/adservice:isansharma/adservice
 
             - name: Run Trivy vulnerability scan
               uses: aquasecurity/trivy-action@master
               with:
-                image-ref: isansharma/accountingservice:${{ github.run_number }}
+                image-ref: isansharma/adservice:${{ github.run_number }}
                 format: 'table'
                 exit-code: '1'              # Fail the workflow on high/critical issues
                 ignore-unfixed: true        # Optional: skip unfixed vulnerabilities
