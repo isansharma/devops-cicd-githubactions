@@ -54,8 +54,8 @@ jobs:
             #      tags: isansharma/adservice
             - name: build image
               run: |
-                docker buildx build -f src/ad/Dockerfile -t isansharma/adservice ./src/ad
-                docker push isansharma/adservice:isansharma/adservice
+                docker buildx build -f src/ad/Dockerfile -t isansharma/adservice ./src/ad --push
+                # docker push isansharma/adservice:isansharma/adservice
 
             - name: Run Trivy vulnerability scan
               uses: aquasecurity/trivy-action@master
