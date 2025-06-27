@@ -1,5 +1,8 @@
 name: accounting
-on: [push]
+on: 
+    push:
+      paths:
+        - 'src/accounting/**'
 jobs:
     build:
         runs-on: ubuntu-latest
