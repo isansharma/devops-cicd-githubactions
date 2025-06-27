@@ -1,0 +1,25 @@
+name: Cart Service
+on: push
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: code checkout
+        uses: actions/checkout@v4
+      - name: setup dotnet
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+      - name: Copy pb file
+        run: |
+            mkdir -p src/accounting/proto
+            cp pb/demo.proto src/accounting/proto/demo.proto
+      - name: Restore Dependencies
+        run: |
+            dotnet restore src/cart/src/cart.csproj
+      - name: Build Project
+        run: |
+            dotnet build src/cart/src/cart.csproj
+      - name: Test code
+        run: |
+            dotnet test --no-build --verbosity normal /src/cart/tests/cart.tests.csproj
