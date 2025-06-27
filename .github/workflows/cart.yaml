@@ -1,5 +1,8 @@
 name: Cart Service
-on: push
+on:
+ push:
+    paths:
+      - 'src/cart/**'
 jobs:
   build:
     runs-on: ubuntu-latest
