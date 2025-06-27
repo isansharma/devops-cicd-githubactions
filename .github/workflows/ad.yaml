@@ -1,11 +1,11 @@
 name: Build and Test Ad Service
-on:
-    push:
-        paths:
-            - 'src/ad/**'
-    pull_request: 
-        paths:
-            - 'src/ad/**'
+on: [push]
+    # push:
+    #     paths:
+    #         - 'src/ad/**'
+    # pull_request: 
+    #     paths:
+    #         - 'src/ad/**'
 jobs:
     build:
         runs-on: ubuntu-latest
